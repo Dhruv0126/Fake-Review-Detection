@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Review Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            overflow: hidden;
+            cursor: url('path-to-your-cursor-image.png'), auto;
+            transition: background 0.3s ease;
+        }
+
+        /* Container for centering the form */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Background Animation with Parallax Effect */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #00b5ff, #b600ff);
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Parallax scrolling effect */
+        .parallax {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 100px;
+            opacity: 0.1;
+            animation: moveBackground 10s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                transform: translateX(-50%) translateY(100px);
+            }
+        }
+
+        /* Form Container */
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite alternate;
+        }
+
+        /* Form Header */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #b600ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: neonGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Input Fields */
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 2px solid transparent;
+            outline: none;
+            background: #202020;
+            color: #fff;
+            font-size: 16px;
+            box-shadow: 0 0 10px rgba(182, 0, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            background: #333;
+            box-shadow: 0 0 15px rgba(182, 0, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Submit Button */
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #b600ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #121212;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 0 10px rgba(182, 0, 255, 0.5);
+        }
+
+        button:hover {
+            background-color: #8a00e6;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(182, 0, 255, 0.7);
+        }
+
+        /* Glowing Effect for Text */
+        @keyframes neonGlow {
+            0% {
+                text-shadow: 0 0 5px #b600ff, 0 0 10px #b600ff, 0 0 15px #b600ff, 0 0 20px #b600ff;
+            }
+            100% {
+                text-shadow: 0 0 10px #b600ff, 0 0 15px #b600ff, 0 0 20px #b600ff, 0 0 25px #b600ff;
+            }
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(10px);
+            }
+        }
+
+        /* Detection Page Styles */
+        .detection-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        textarea {
+            width: 80%;
+            height: 150px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #b600ff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            input {
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="parallax">#AI</div>
+
+    <div class="container">
+        <!-- Signup Form -->
+        <div class="form-container" id="signup-form">
+            <h1>Signup</h1>
+            <form action="/main" method="POST">
+                <input type="text" name="first_name" placeholder="First Name" required>
+                <input type="text" name="last_name" placeholder="Last Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Detection Form (shown after login) -->
+    <div class="detection-container" id="detection-form" style="display: none;">
+        <h1>Fake Review Detection</h1>
+        <form action="/analyze_review" method="POST">
+            <textarea name="review_text" placeholder="Enter the review text..." required></textarea>
+            <button type="submit">Analyze</button>
+        </form>
+
+        <form action="/upload_csv" method="POST" enctype="multipart/form-data">
+            <input type="file" name="csv_file" accept=".csv" required>
+            <button type="submit">Upload CSV</button>
+        </form>
+     <!-- Loading Spinner (Initially Hidden) -->
+     <div id="loading-spinner" style="display: none;">
+        <img src="loading-spinner.gif" alt="Loading...">
+    </div>
+    
+        <div class="result" id="review-result">
+            <!-- Review analysis results will appear here -->
+        </div>
+    </div>
+
+    <script>
+        // Simulate login to display the second page after signup
+        const signupForm = document.getElementById('signup-form');
+        const detectionForm = document.getElementById('detection-form');
+        
+        // This is just a simulation. In a real app, you would handle this with actual authentication.
+        function simulateLogin() {
+            signupForm.style.display = 'none';  // Hide signup form
+            detectionForm.style.display = 'block';  // Show detection form
+        }
+
+        // Simulating a login action after form submission
+        document.querySelector('form[action="/main"]').addEventListener('submit', function(event) {
+            event.preventDefault();
+            simulateLogin(); // Show the main page after signup
+        });
+    </script>
+</body>
+</html>
